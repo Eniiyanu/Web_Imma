@@ -1,0 +1,7 @@
+I find it interesting that you were able to use XPath to parse HTML within a JSON structure before.
+
+If you are looking for a workaround, downgrade parsel to <1.8.
+
+As for a long-term solution, I am inclined to say that this is how things should work.
+
+If you have {"html": "<html><title>foo</title></html>"}, you do not use response.xpath("//title"), you use response.selector.jmespath("html").xpath("//tittle") (or, starting with the upcoming Scrapy 2.9, response.jmespath("html").xpath("//tittle")).
